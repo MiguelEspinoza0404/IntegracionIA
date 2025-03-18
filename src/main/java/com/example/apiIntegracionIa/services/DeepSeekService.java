@@ -14,7 +14,7 @@ import java.util.*;
 @Service
 public class DeepSeekService {
     private static final String API_URL = "https://openrouter.ai/api/v1/chat/completions";
-    private static final String API_KEY = "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"; 
+    private static final String API_KEY = "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"; 
 
     public String getSummary(String text) {
         RestTemplate restTemplate = new RestTemplate();
