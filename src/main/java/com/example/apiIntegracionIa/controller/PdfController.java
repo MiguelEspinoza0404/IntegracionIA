@@ -30,11 +30,11 @@ public class PdfController {
     
     @CrossOrigin(origins = "*")
     @PostMapping("/upload")
-    public ResponseEntity<?> uploadFiles(@RequestParam("files") List<MultipartFile> files) throws IOException {
+    public ResponseEntity<?> uploadFiles(@RequestParam("files") List<MultipartFile> files,@RequestParam("prompt") String prompt) throws IOException {
         List<String> summaries = new ArrayList<>();
         for (MultipartFile file : files) {
             String extractedText = extractTextFromPdf(file.getInputStream());
-            summaries.add(deepSeekService.getSummary(extractedText));
+            summaries.add(deepSeekService.getSummary(extractedText,prompt));
         }
         
         return new ResponseEntity<>(summaries,HttpStatus.OK);
